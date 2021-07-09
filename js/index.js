@@ -980,3 +980,24 @@ console.log('reverse',numSort);
 
 numSort.sort();
 console.log('sorting',numSort);
+
+//when there is objects involve
+const courseSort = [
+    { id : 1 , name : 'Node.js'},
+    { id : 2 , name : 'javascript.js'}
+];
+
+courseSort.sort (function(a,b){
+//a < b => -1
+//a > b => 1
+//a === b => 0
+
+const nameA = a.name.toUpperCase();
+const nameB = b.name.toUpperCase();
+
+if (nameA < nameB) return -1;
+if (nameA > nameB) return 1;
+return 0;
+});
+
+console.log(courseSort);
