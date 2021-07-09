@@ -971,4 +971,12 @@ const splitsJoin = splits.join('-');
 console.log(splitsJoin);
 
 
-//this is the test statement
+//sorting an array
+numSort = [2,3,1,3,5,2,7,9,1,8];
+console.log('numsort',numSort);
+
+numSort.reverse();
+console.log('reverse',numSort);
+
+numSort.sort();
+console.log('sorting',numSort);
