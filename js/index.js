@@ -1001,3 +1001,63 @@ return 0;
 });
 
 console.log(courseSort);
+
+//Every function
+numEvery = [2,3,1,-3,5,2,7,9,1,8];
+
+const allPositive = numEvery.every(function (valueEvery) {
+    return valueEvery >= 0
+});
+
+console.log('allPositive : ', allPositive);
+
+const allPositiveArrow = numEvery.every(valueEvery => valueEvery >= 0);//This is by using the arrow function
+
+console.log('arrow function Every : ', allPositiveArrow);
+
+//Some function
+const atLeastOnePositive = numEvery.some(function(valueSome){
+    return valueSome >= 0;
+});
+
+console.log('atLeastOnePositive : ', atLeastOnePositive);
+
+const atLeastOnePositiveArrow = numEvery.some(valueSome => valueSome >= 0);//This is by using the arrow function
+
+console.log('arrow function Some : ', atLeastOnePositiveArrow);
+
+//Filter function
+
+numEvery = [2,3,1,-3,5,2,7,9,1,8];
+
+const filtered = numEvery.filter(function(valueFilter){
+    return valueFilter >=0 ;
+});
+
+console.log('filetered :', filtered);
+
+const filteredArrow = numEvery.filter(valueFilteraarrow => valueFilteraarrow >=0);
+
+console.log('filetered Arrow :', filteredArrow);
+
+
+const resturantArrayObject = [
+    { name: 'AB', place: 'Moritius', rating: '***', openingTimming: 2, closingTimming: 11 },
+    { name: 'CD', place: 'Morit', rating: '*', openingTimming: 6, closingTimming: 9 },
+    { name: 'EF', place: 'Moriti', rating: '****', openingTimming: 3, closingTimming: 10 },
+    { name: 'GH', place: 'Moritu', rating: '**', openingTimming: 5, closingTimming: 10 },
+];
+
+const filterResuturant = resturantArrayObject.filter(function(op) {
+   if  (op.openingTimming >= 3 ) return -1 ;
+});
+const filterResuturantOne = resturantArrayObject.filter(op => {if (op.openingTimming >= 3 ) return -1 ;
+});
+// how to include the two condition with &&.
+console.log('Filtered Resturant',filterResuturantOne);
+
+const sortFilter = filterResuturant.sort((op,cl) => {
+    return op.openingTimming - cl.openingTimming;
+});
+
+console.log('Sorted Filtered Resturant',sortFilter);
