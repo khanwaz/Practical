@@ -1061,3 +1061,62 @@ const sortFilter = filterResuturant.sort((op,cl) => {
 });
 
 console.log('Sorted Filtered Resturant',sortFilter);
+
+
+// Map method 
+numMap = [2,3,1,-3,5,2,7,9,1,8];
+
+const filMap = numMap.filter( n => n >= 0);
+const filMapItem = filMap.map(n => '<li>' + n + '</li>');
+const html ='<ul>' + filMapItem.join('') + '</ul>';
+
+console.log('filMap :',filMap);
+console.log('filMapItem : ',filMapItem);
+console.log('html :',html);
+
+
+// Map method for objects
+
+numMapObj = [2,3,1,-3,5,2,7,9,1,8];
+
+const filMapObj = numMapObj.filter(n => n >= 0);
+const filMapObjItems = filMapObj.map ( n => {
+    const objItems = {value : n};
+    return objItems;
+});
+
+console.log('filMapObjItems :',filMapObjItems);
+
+// Map method with channing
+
+numMapChain = [2,3,1,-3,5,2,7,9,1,8];
+
+const filMapChain = numMapChain.filter(n => n >= 0)
+.map(n => '<li>' + n + '</li>')
+.join('');
+
+console.log('filMapChain :',filMapChain);
+
+// Map method for objects with channing
+
+numMapObjChain = [2,3,1,-3,5,2,7,9,1,8];
+
+const filMapObjChain = numMapObjChain.filter(n => n >= 0)
+.map ( n => {
+return {value : n};
+});
+
+console.log('filMapObjChain :',filMapObjChain);
+
+// solution 2
+numMapObjChain1 = [2,3,1,-3,5,2,7,9,1,8];
+
+const filMapObjChain1 = numMapObjChain1
+.sort()
+.filter(n => n >= 0)
+ .map ( n => ({Resturant : n}) )
+ .filter(obj => obj.Resturant >1);
+ //.map ( obj => obj.akram)
+ //.filter (n => n > 2);
+
+console.log('filMapObjChain1 :',filMapObjChain1);
