@@ -1028,7 +1028,7 @@ console.log('arrow function Some : ', atLeastOnePositiveArrow);
 
 //Filter function
 
-numEvery = [2,3,1,-3,5,2,7,9,1,8];
+//numEvery = [2,3,1,-3,5,2,7,9,1,8];
 
 const filtered = numEvery.filter(function(valueFilter){
     return valueFilter >=0 ;
@@ -1114,9 +1114,184 @@ numMapObjChain1 = [2,3,1,-3,5,2,7,9,1,8];
 const filMapObjChain1 = numMapObjChain1
 .sort()
 .filter(n => n >= 0)
- .map ( n => ({Resturant : n}) )
- .filter(obj => obj.Resturant >1);
- //.map ( obj => obj.akram)
- //.filter (n => n > 2);
+.map ( n => ({Resturant : n}) )
+.filter(obj => obj.Resturant >1);
+//.map ( obj => obj.akram)
+//.filter (n => n > 2);
 
 console.log('filMapObjChain1 :',filMapObjChain1);
+
+//reducing an array
+
+const numReducing = [2,3,1,-3,5,2,7,9,1,8];
+
+let sumReduce = 0;
+for (let n of numReducing)
+ sumReduce += n;
+
+console.log('sumReduce :',sumReduce);
+
+const sumReduceFunc0 = numReducing.reduce((accumulator,currentValue) => {
+ return accumulator + currentValue;
+},0); 
+
+console.log('sumReduceFunc0 :',sumReduceFunc0);
+
+const sumReduceFunc = numReducing.reduce(
+   (accumulator,currentValue) =>  accumulator + currentValue
+); 
+   
+console.log('sumReduceFunc :',sumReduceFunc);
+
+//Exercise
+
+//array from range
+
+const numRange = arrayFromRange(-10, -4);
+
+console.log(numRange);
+
+function arrayFromRange(min,max){
+    const outputRange = [];
+    for (let i= min ; i <= max ; i++)
+     outputRange.push(i);
+    return outputRange
+}
+
+// Rewritting the include function 
+
+const numIncludes = [1, 2, 3, 4];
+const display = numyIncludes(numIncludes, 6);
+const display1 = numyIncludes(numIncludes, 4);
+
+console.log('display  :', display);
+console.log('display1 :', display1);
+
+function numyIncludes (array, searchElement) {
+    for (let n of array)
+        if (n === searchElement)
+         return true;
+    return false;
+}
+
+// Except funciton
+
+const numExcept = [1, 2, 3, 4];
+const numRemove = [1, 4];
+const outpu =  except(numExcept,numRemove);
+
+console.log('outputExceptA',outpu);
+
+function except(array, exclude){
+    const outputExcept = [];
+    for (let n of array)
+        if (!exclude.includes(n))
+            outputExcept.push(n);
+        return outputExcept;
+}
+
+// Moving an element
+
+const numMoving = [1, 2, 3, 4];
+const outputElement = movingElement (numMoving, 0 , 3);
+
+console.log('The original : ', numMoving, 'The moved :', outputElement);
+
+function movingElement (array,index,offset){
+//Offset is the index where the user wants to move the element to.
+//Index is the index of the element from where the user wants to move it.  
+const position = index + offset;
+if (position >= array.length || position < 0)
+{   
+    console.error('Invalid Offset');
+    return ;
+}
+const outputElement = [...array];
+const element = outputElement.splice(index, 1) [0];
+outputElement.splice(position, 0 , element);
+return outputElement;
+}
+
+//Count Occurance
+const numOccur = [1, 2, 3, 4];
+const count = countOccurance(numOccur,5);
+
+console.log('How many are present in : ',count);
+
+function countOccurance(array , searchElementOccur){
+    let count = 0;
+    for (let ele of array)
+        if (ele === searchElementOccur)
+        count++;
+    return count;
+}
+
+// solution 2
+const numOcc = [1, 2, 3, 4];
+const countSol = countOccur(numOcc,1);
+console.log('How many are present in solution 2 : ', countSol);
+
+function countOccur(arrayOne, searchElementOccurOne) {
+    return arrayOne.reduce((accumulatorOne, currentValueOne) => {
+        const Occura = (currentValueOne === searchElementOccurOne) ? 1 : 0;
+        console.log(accumulatorOne, currentValueOne, searchElementOccurOne);
+        return accumulatorOne + Occura;
+    }, 0);
+}
+
+//Get max
+
+const numMax = [1, 2, 3, 4];
+const numMaxSol = getMax(numMax);
+
+console.log('numMaxSol',numMaxSol);
+
+function getMax(array){
+    if ( array.length === 0 ) return undefined;
+
+    let max = array[0];
+
+    for (let i = 1; i < array.length; i++ )
+        if ( array[i] > max)
+        max = array[i];
+
+    return max ;
+}
+
+
+//solution 2:
+
+const numMax2 = [1, 2, 3, 4];
+const numMaxSol2 = getMaxSol2(numMax2);
+
+console.log('numMaxSol2',numMaxSol2);
+
+function getMaxSol2(array){
+    if ( array.length === 0 ) return undefined;
+    return array.reduce((a, b) => (b > a) ? b : a );
+}
+
+// Get movies
+
+const movies = [
+    {title:'a', years: 2018, rating : 4.5},
+    {title:'b', years: 2018, rating : 5},
+    {title:'c', years: 2016, rating : 4.7},
+    {title:'d', years: 2017, rating : 3},
+    {title:'e', years: 2018, rating : 3.5},
+    {title:'f', years: 2016, rating : 3.2},
+];
+
+//Last excercise
+//All the movies in the 2018 with rating >4
+//sort them by thier rating
+//Descending Order
+//Pick their title
+
+const getMovies = movies
+    .filter(m => m.years === 2018 && m.rating >= 4)
+    .sort((a,b) => a.rating - b.rating)
+    .reverse()
+    .map(m => m.title)
+   
+console.log(getMovies);
