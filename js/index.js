@@ -1258,7 +1258,6 @@ function getMax(array){
     return max ;
 }
 
-
 //solution 2:
 
 const numMax2 = [1, 2, 3, 4];
@@ -1295,3 +1294,161 @@ const getMovies = movies
     .map(m => m.title)
    
 console.log(getMovies);
+
+// Functions
+walk();
+//run(); cant call the function before its declaration
+//jog();
+
+//Function Declaration
+function walk (){
+    console.log('Walk');
+}
+
+//Function Expression
+//Option 1
+let run = function (){
+    console.log('run');
+};
+
+//Option 2
+let jog = function jogging (){
+    console.log('jog');
+};
+
+run();
+walk();
+jog();
+
+//What is hoisting?
+//The process of moving all the function declaration to the top of the file.
+
+//aruguments: A special object
+function sumArguments (){
+    let total = 0;
+    for (let value of arguments)
+        total += value;
+    return total;
+}
+
+let sumArgumentsResult =sumArguments(1,2,3,5,7,10);
+
+console.log(sumArgumentsResult);
+
+//Rest operator
+function sumDiscountedPrice(discount,...prices){
+    const sumP =  prices.reduce((a, b) => a + b );
+    return sumP * (1 - discount);
+}
+
+const displayResult = sumDiscountedPrice(.2,50,50,50,50);
+
+console.log(displayResult);
+
+//default Parameter
+
+function interestRate(principal, rate, years){
+    return principal*rate / 100 * years;
+}
+
+console.log(interestRate(10000,3.5,5));
+
+//by using default Parameter
+function interestRateDefault(principal, rate = 3.5, years = 5){
+    return principal*rate / 100 * years;
+}
+
+console.log(interestRateDefault(10000));
+
+//Getter and Setter
+
+const personPersonals = {
+    firstNamePersonal : 'Aleena',
+    secondNamePersonal : 'Khan',
+    get fullNamePersonal (){
+        return `${personPersonals.firstNamePersonal} ${this.secondNamePersonal}`;
+    },
+    set fullNamePersonal (value){
+        const parts = value.split(' ');
+        this.firstNamePersonal = parts[0];
+        this.secondNamePersonal = parts[1];
+    },
+};
+
+personPersonals.fullNamePersonal = 'Akram Khan';
+
+console.log('Full Name : ', personPersonals.fullNamePersonal);
+
+//Try and catch
+
+personPersonalDetails = {
+    firstNameDetail : 'Aleena',
+    secondNameDetail : 'Khan',
+    display(){//To know how "THIS" keyword work
+        console.log(this);
+    },
+    get fullNameDetail (){
+        return `${this.firstNameDetail} ${this.secondNameDetail}`;
+    },
+    set fullNameDetail (value){
+        if (typeof value !== 'string' ) 
+            throw new Error ('Value is not string.');
+
+        const partDetail = value.split(' ');
+        if (partDetail.length !== 2)
+            throw new Error ('Please enter first name and second name');
+
+        this.firstNameDetail = partDetail [0];
+        this.secondNameDetail = partDetail [1];
+    }
+};
+try{
+    personPersonalDetails.fullNameDetail = null;
+ }
+ catch (e){
+ console.log(e);
+}
+
+console.log('Full Name Details : ', personPersonalDetails.fullNameDetail);
+
+personPersonalDetails.show = function(){
+    console.log(this);
+};
+
+personPersonalDetails.display();//To know how "THIS" keyword work
+personPersonalDetails.show();//To know how "THIS" keyword work
+
+
+// Global scope vs Local
+// local varible will have the pricedance over the global varible
+
+//let vs var
+// var => function-scoped
+// Es6 (ES2015): let, const => block-scoped
+
+//This keyword
+
+const video = {
+    title : 'a',
+    tags :['a','b','c'],
+    showTags (){
+        this.tags.forEach(function(tag){
+            console.log(this.title, tag);
+        }, this);
+    }
+};
+
+video.showTags();
+console.log(video.title);
+
+//Chaning This keyword with using arrow function
+
+const videoPlay = {
+    title : 'a',
+    tags :['a','b','c'],
+    showTagsA (){
+        this.tags.forEach(tag => console.log(this.title, tag));
+    }
+};
+
+videoPlay.showTagsA();
