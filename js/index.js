@@ -1452,3 +1452,49 @@ const videoPlay = {
 };
 
 videoPlay.showTagsA();
+
+
+//Function Exercise
+
+function sumExercise(...sumArray){
+    if (sumArray.length === 1 && Array.isArray(sumArray[0]))
+    sumArray = [...sumArray[0]];
+    return sumArray.reduce((a, b) => a + b );
+}
+
+const displayResultSumE = sumExercise([50, 50, 60, 50, 50]);
+
+console.log('sum :',displayResultSumE);
+
+//Area of circle
+
+const circleReadOnly = {
+    radius : 1,
+    get areaOfCircle ()
+    {
+        return Math.PI * this.radius * this.radius ;
+    }
+};
+
+console.log(circleReadOnly.areaOfCircle);
+
+//Error Handling
+try{
+    const numOccErr = [1, 2, 3, 4];
+    const countSolErr = countOccurErr(null,1);
+    console.log('How many are present in solution for Error : ', countSolErr);  
+}
+catch(e){
+    console.log(e.message);
+}
+
+function countOccurErr(arrayOneErr, searchElementOccurOne) {
+    if (!Array.isArray( arrayOneErr))
+        throw new Error('Invalid Array');
+
+    return arrayOneErr.reduce((accumulatorOne, currentValueOne) => {
+        const Occura = (currentValueOne === searchElementOccurOne) ? 1 : 0;
+        console.log(accumulatorOne, currentValueOne, searchElementOccurOne);
+        return accumulatorOne + Occura;
+    }, 0);
+}
