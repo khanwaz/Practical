@@ -7,7 +7,7 @@ const circle = {
         y : 2
     },
     draw : function(){
-        console.log('Draw',circle.location.x * circle.location.y,);
+        console.log('Draw',circle.location.x * circle.location.y);
     }
 };
 
