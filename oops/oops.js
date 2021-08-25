@@ -94,20 +94,29 @@ if ('radiusCirFun'in circleConstructorAdd)
 
 //Abstraction
 function CircleAbs (radiusAbs){
-    let baseLocationAbs = {x:0 , y :0};
     this.radiusAbs = radiusAbs ;
     
-    this.computeAbs = function(a,b){
-        console.log(a+b);
+    let baseLocationAbs = {x:0 , y :0};
+    
+    let computeAbs = function(a,b){
+        let c = a + b ;
+        return(c);
     }
-    this.drawAbs = function (){
-        this.computeAbs(2,6);
-
-        console.log(this.drawAbs);
+    this.drawAbs = function (x,y){
+        console.log(computeAbs(x,y));
     };
 }
  
 const circleAbsA = new CircleAbs(12);
-console.log( circleAbsA.drawAbs());
 
+// let resultAbsA = 
+// console.log ( resultAbsA );
 
+console.log('this is',);
+circleAbsA.drawAbs(5,6)
+
+const radiusAbsA = circleAbsA.radiusAbs ;
+console.log (radiusAbsA);
+
+console.log('that is',);
+circleAbsA.drawAbs(4,6);
