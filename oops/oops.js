@@ -113,10 +113,44 @@ const circleAbsA = new CircleAbs(12);
 // console.log ( resultAbsA );
 
 console.log('this is',);
-circleAbsA.drawAbs(5,6)
+circleAbsA.drawAbs(16,4)
 
 const radiusAbsA = circleAbsA.radiusAbs ;
 console.log (radiusAbsA);
 
 console.log('that is',);
 circleAbsA.drawAbs(4,6);
+
+// Getters and setters functions
+
+// function DupeFun (area) {
+//     this.area = area;
+    
+    const personDetailsDupe ={
+    firstNameDupe : 'Aleena',
+    lastNameDupe : 'Khan',
+    Age : '1',    
+    get fullNameDupe (){
+        return `${personDetailsDupe.firstNameDupe} ${personDetailsDupe.lastNameDupe}`
+    },
+    set fullNameDupe (value){
+        //return `${personDetailsDupe.firstNameDupe} ${personDetailsDupe.lastNameDupe}`
+        //console.log(value);
+        const fullNameDupeP = value.split(' ') ;
+        this.firstNameDupe = fullNameDupeP[0];
+        this.lastNameDupe = fullNameDupeP[1];
+    }
+    };
+//}
+
+// const dupeFun = new DupeFun(25);
+// console.log(dupeFun.area);
+// const nameDupe = dupeFun.personDetailsDupe;
+// console.log(nameDupe);
+
+console.log(personDetailsDupe.firstNameDupe);
+console.log(personDetailsDupe.fullNameDupe);
+personDetailsDupe.fullNameDupe;
+
+personDetailsDupe.fullNameDupe = 'Akram Khani';
+console.log(personDetailsDupe.fullNameDupe);
