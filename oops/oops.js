@@ -123,9 +123,6 @@ circleAbsA.drawAbs(4,6);
 
 // Getters and setters functions
 
-// function DupeFun (area) {
-//     this.area = area;
-    
     const personDetailsDupe ={
     firstNameDupe : 'Aleena',
     lastNameDupe : 'Khan',
@@ -141,7 +138,6 @@ circleAbsA.drawAbs(4,6);
         this.lastNameDupe = fullNameDupeP[1];
     }
     };
-//}
 
 // const dupeFun = new DupeFun(25);
 // console.log(dupeFun.area);
@@ -154,3 +150,73 @@ personDetailsDupe.fullNameDupe;
 
 personDetailsDupe.fullNameDupe = 'Akram Khani';
 console.log(personDetailsDupe.fullNameDupe);
+
+// Getters and setters functions in the constructors
+function DupeFun (area) {
+    this.area = area;
+    
+    let defaultArea = {x : 0, y: 0};
+    this.getDefaultArea = function (){
+        return defaultArea;
+    };
+
+    Object.defineProperty(this,defaultArea,{
+        get: function(){
+            return defaultArea;
+        },
+        set: function(valueSet){
+            if (!value.x || !value.y)
+
+            defaultArea = valueSet;
+        }
+    });
+}
+ const dupefuny = new DupeFun(3);
+ dupefuny.defaultArea = 1;
+ console.log(dupefuny);
+
+
+ // Stopwatch exercise
+
+function Stopwatch (){
+    let startTime, endTime, running, duration = 0;
+
+    this.start = function (){
+        if (running)
+            throw new Error ('The stopwatch is already running');
+
+        running = true;
+
+        startTime = new Date();
+    };
+
+    this.stop = function (){
+        if (!running)
+            throw new Error ('The stopwatch is not running');
+
+        running = false;
+
+        endTime = new Date();
+
+        const second = (startTime.getTime() - endTime.getTime())/1000;
+        duration += second;
+    };
+
+    this.reset = function(){
+        startTime = null;
+        endTime = null;
+        running = false;
+        duration = 0 ;
+    };
+
+    Object.defineProperty(this,'duration',{
+        get : function()
+        { return duration ;}
+        });
+}
+
+const sw = new Stopwatch();
+sw.start();
+console.log(sw.duration);
+sw.stop();
+console.log(sw.duration);
